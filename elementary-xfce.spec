@@ -4,7 +4,7 @@
 #
 Name     : elementary-xfce
 Version  : 0.7
-Release  : 2
+Release  : 3
 URL      : https://github.com/shimmerproject/elementary-xfce/archive/0.7.tar.gz
 Source0  : https://github.com/shimmerproject/elementary-xfce/archive/0.7.tar.gz
 Summary  : No detailed summary available
