@@ -4,7 +4,7 @@
 #
 Name     : elementary-xfce
 Version  : 0.7
-Release  : 3
+Release  : 4
 URL      : https://github.com/shimmerproject/elementary-xfce/archive/0.7.tar.gz
 Source0  : https://github.com/shimmerproject/elementary-xfce/archive/0.7.tar.gz
 Summary  : No detailed summary available
@@ -31,9 +31,11 @@ data components for the elementary-xfce package.
 %patch1 -p1
 
 %build
+export LANG=C
 make V=1  %{?_smp_mflags}
 
 %install
+export SOURCE_DATE_EPOCH=1484414828
 rm -rf %{buildroot}
 %make_install
 
@@ -55,7 +57,6 @@ rm -rf %{buildroot}
 /usr/share/icons/elementary-xfce-dark/apps/64/blueman.svg
 /usr/share/icons/elementary-xfce-dark/apps/64/xfce4-notes-plugin.svg
 /usr/share/icons/elementary-xfce-dark/apps/96/xfce4-notes-plugin.svg
-/usr/share/icons/elementary-xfce-dark/icon-theme.cache
 /usr/share/icons/elementary-xfce-dark/index.theme
 /usr/share/icons/elementary-xfce-dark/panel/16/audio-input-microphone-high-panel.svg
 /usr/share/icons/elementary-xfce-dark/panel/16/audio-input-microphone-low-zero-panel.svg
@@ -1596,13 +1597,11 @@ rm -rf %{buildroot}
 /usr/share/icons/elementary-xfce-darker/actions/48
 /usr/share/icons/elementary-xfce-darker/actions/64
 /usr/share/icons/elementary-xfce-darker/actions/symbolic
-/usr/share/icons/elementary-xfce-darker/icon-theme.cache
 /usr/share/icons/elementary-xfce-darker/index.theme
 /usr/share/icons/elementary-xfce-darkest/AUTHORS
 /usr/share/icons/elementary-xfce-darkest/CONTRIBUTORS
 /usr/share/icons/elementary-xfce-darkest/LICENSE
 /usr/share/icons/elementary-xfce-darkest/actions
-/usr/share/icons/elementary-xfce-darkest/icon-theme.cache
 /usr/share/icons/elementary-xfce-darkest/index.theme
 /usr/share/icons/elementary-xfce/AUTHORS
 /usr/share/icons/elementary-xfce/CONTRIBUTORS
@@ -7888,7 +7887,6 @@ rm -rf %{buildroot}
 /usr/share/icons/elementary-xfce/emotes/16/face-uncertain.svg
 /usr/share/icons/elementary-xfce/emotes/16/face-wink.svg
 /usr/share/icons/elementary-xfce/emotes/16/face-worried.svg
-/usr/share/icons/elementary-xfce/icon-theme.cache
 /usr/share/icons/elementary-xfce/index.theme
 /usr/share/icons/elementary-xfce/mimes/128/application-7zip.svg
 /usr/share/icons/elementary-xfce/mimes/128/application-atom+xml.svg
@@ -12867,6 +12865,7 @@ rm -rf %{buildroot}
 /usr/share/icons/elementary-xfce/status/64/stock_dialog-warning.svg
 /usr/share/icons/elementary-xfce/status/64/stock_unknown.svg
 /usr/share/icons/elementary-xfce/status/64/xfce-unknown.svg
+/usr/share/icons/elementary-xfce/status/symbolic/
 /usr/share/icons/elementary-xfce/status/symbolic/airplane-mode-symbolic.svg
 /usr/share/icons/elementary-xfce/status/symbolic/alarm-symbolic.svg
 /usr/share/icons/elementary-xfce/status/symbolic/appointment-missed-symbolic.svg
