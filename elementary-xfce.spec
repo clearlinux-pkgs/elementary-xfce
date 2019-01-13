@@ -4,7 +4,7 @@
 #
 Name     : elementary-xfce
 Version  : 0.8
-Release  : 8
+Release  : 9
 URL      : https://github.com/shimmerproject/elementary-xfce/archive/v0.8.tar.gz
 Source0  : https://github.com/shimmerproject/elementary-xfce/archive/v0.8.tar.gz
 Summary  : No detailed summary available
