@@ -4,14 +4,16 @@
 #
 Name     : elementary-xfce
 Version  : 0.8
-Release  : 9
+Release  : 10
 URL      : https://github.com/shimmerproject/elementary-xfce/archive/v0.8.tar.gz
 Source0  : https://github.com/shimmerproject/elementary-xfce/archive/v0.8.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: elementary-xfce-data
+Requires: elementary-xfce-data = %{version}-%{release}
+Requires: elementary-xfce-license = %{version}-%{release}
 BuildRequires : gtk+-bin
+BuildRequires : pkgconfig(gtk+-3.0)
 Patch1: 0001-Add-Makefile.patch
 
 %description
@@ -26,18 +28,42 @@ Group: Data
 data components for the elementary-xfce package.
 
 
+%package license
+Summary: license components for the elementary-xfce package.
+Group: Default
+
+%description license
+license components for the elementary-xfce package.
+
+
 %prep
 %setup -q -n elementary-xfce-0.8
 %patch1 -p1
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1490623929
-make V=1  %{?_smp_mflags}
+export SOURCE_DATE_EPOCH=1558341314
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+make  %{?_smp_mflags}
+
 
 %install
-export SOURCE_DATE_EPOCH=1490623929
+export SOURCE_DATE_EPOCH=1558341314
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/elementary-xfce
+cp elementary-xfce-dark/LICENSE %{buildroot}/usr/share/package-licenses/elementary-xfce/elementary-xfce-dark_LICENSE
+cp elementary-xfce-darker/LICENSE %{buildroot}/usr/share/package-licenses/elementary-xfce/elementary-xfce-darker_LICENSE
+cp elementary-xfce-darkest/LICENSE %{buildroot}/usr/share/package-licenses/elementary-xfce/elementary-xfce-darkest_LICENSE
+cp elementary-xfce/LICENSE %{buildroot}/usr/share/package-licenses/elementary-xfce/elementary-xfce_LICENSE
 %make_install
 
 %files
@@ -59,6 +85,7 @@ rm -rf %{buildroot}
 /usr/share/icons/elementary-xfce-dark/apps/64/blueman.svg
 /usr/share/icons/elementary-xfce-dark/apps/64/xfce4-notes-plugin.svg
 /usr/share/icons/elementary-xfce-dark/apps/96/xfce4-notes-plugin.svg
+/usr/share/icons/elementary-xfce-dark/icon-theme.cache
 /usr/share/icons/elementary-xfce-dark/index.theme
 /usr/share/icons/elementary-xfce-dark/panel/16/audio-input-microphone-high-panel.svg
 /usr/share/icons/elementary-xfce-dark/panel/16/audio-input-microphone-low-zero-panel.svg
@@ -1611,11 +1638,13 @@ rm -rf %{buildroot}
 /usr/share/icons/elementary-xfce-darker/actions/48
 /usr/share/icons/elementary-xfce-darker/actions/64
 /usr/share/icons/elementary-xfce-darker/actions/symbolic
+/usr/share/icons/elementary-xfce-darker/icon-theme.cache
 /usr/share/icons/elementary-xfce-darker/index.theme
 /usr/share/icons/elementary-xfce-darkest/AUTHORS
 /usr/share/icons/elementary-xfce-darkest/CONTRIBUTORS
 /usr/share/icons/elementary-xfce-darkest/LICENSE
 /usr/share/icons/elementary-xfce-darkest/actions
+/usr/share/icons/elementary-xfce-darkest/icon-theme.cache
 /usr/share/icons/elementary-xfce-darkest/index.theme
 /usr/share/icons/elementary-xfce/AUTHORS
 /usr/share/icons/elementary-xfce/CONTRIBUTORS
@@ -7978,6 +8007,7 @@ rm -rf %{buildroot}
 /usr/share/icons/elementary-xfce/emotes/16/face-uncertain.svg
 /usr/share/icons/elementary-xfce/emotes/16/face-wink.svg
 /usr/share/icons/elementary-xfce/emotes/16/face-worried.svg
+/usr/share/icons/elementary-xfce/icon-theme.cache
 /usr/share/icons/elementary-xfce/index.theme
 /usr/share/icons/elementary-xfce/mimes/128/application-7zip.svg
 /usr/share/icons/elementary-xfce/mimes/128/application-atom+xml.svg
@@ -13244,3 +13274,10 @@ rm -rf %{buildroot}
 /usr/share/icons/elementary-xfce/tools/22/draw-star.png
 /usr/share/icons/elementary-xfce/tools/22/draw-star.svg
 /usr/share/icons/elementary-xfce/tools/22/draw-text.svg
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/elementary-xfce/elementary-xfce-dark_LICENSE
+/usr/share/package-licenses/elementary-xfce/elementary-xfce-darker_LICENSE
+/usr/share/package-licenses/elementary-xfce/elementary-xfce-darkest_LICENSE
+/usr/share/package-licenses/elementary-xfce/elementary-xfce_LICENSE
