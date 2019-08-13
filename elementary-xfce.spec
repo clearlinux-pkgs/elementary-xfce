@@ -4,7 +4,7 @@
 #
 Name     : elementary-xfce
 Version  : 0.8
-Release  : 11
+Release  : 12
 URL      : https://github.com/shimmerproject/elementary-xfce/archive/v0.8.tar.gz
 Source0  : https://github.com/shimmerproject/elementary-xfce/archive/v0.8.tar.gz
 Summary  : No detailed summary available
@@ -44,8 +44,9 @@ license components for the elementary-xfce package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1558341314
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1565737390
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -57,7 +58,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1558341314
+export SOURCE_DATE_EPOCH=1565737390
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/elementary-xfce
 cp elementary-xfce-dark/LICENSE %{buildroot}/usr/share/package-licenses/elementary-xfce/elementary-xfce-dark_LICENSE
@@ -65,6 +66,11 @@ cp elementary-xfce-darker/LICENSE %{buildroot}/usr/share/package-licenses/elemen
 cp elementary-xfce-darkest/LICENSE %{buildroot}/usr/share/package-licenses/elementary-xfce/elementary-xfce-darkest_LICENSE
 cp elementary-xfce/LICENSE %{buildroot}/usr/share/package-licenses/elementary-xfce/elementary-xfce_LICENSE
 %make_install
+## Remove excluded files
+rm -f %{buildroot}/usr/share/icons/elementary-xfce-dark/icon-theme.cache
+rm -f %{buildroot}/usr/share/icons/elementary-xfce-darker/icon-theme.cache
+rm -f %{buildroot}/usr/share/icons/elementary-xfce-darkest/icon-theme.cache
+rm -f %{buildroot}/usr/share/icons/elementary-xfce/icon-theme.cache
 
 %files
 %defattr(-,root,root,-)
@@ -85,7 +91,6 @@ cp elementary-xfce/LICENSE %{buildroot}/usr/share/package-licenses/elementary-xf
 /usr/share/icons/elementary-xfce-dark/apps/64/blueman.svg
 /usr/share/icons/elementary-xfce-dark/apps/64/xfce4-notes-plugin.svg
 /usr/share/icons/elementary-xfce-dark/apps/96/xfce4-notes-plugin.svg
-/usr/share/icons/elementary-xfce-dark/icon-theme.cache
 /usr/share/icons/elementary-xfce-dark/index.theme
 /usr/share/icons/elementary-xfce-dark/panel/16/audio-input-microphone-high-panel.svg
 /usr/share/icons/elementary-xfce-dark/panel/16/audio-input-microphone-low-zero-panel.svg
@@ -1638,13 +1643,11 @@ cp elementary-xfce/LICENSE %{buildroot}/usr/share/package-licenses/elementary-xf
 /usr/share/icons/elementary-xfce-darker/actions/48
 /usr/share/icons/elementary-xfce-darker/actions/64
 /usr/share/icons/elementary-xfce-darker/actions/symbolic
-/usr/share/icons/elementary-xfce-darker/icon-theme.cache
 /usr/share/icons/elementary-xfce-darker/index.theme
 /usr/share/icons/elementary-xfce-darkest/AUTHORS
 /usr/share/icons/elementary-xfce-darkest/CONTRIBUTORS
 /usr/share/icons/elementary-xfce-darkest/LICENSE
 /usr/share/icons/elementary-xfce-darkest/actions
-/usr/share/icons/elementary-xfce-darkest/icon-theme.cache
 /usr/share/icons/elementary-xfce-darkest/index.theme
 /usr/share/icons/elementary-xfce/AUTHORS
 /usr/share/icons/elementary-xfce/CONTRIBUTORS
@@ -8007,7 +8010,6 @@ cp elementary-xfce/LICENSE %{buildroot}/usr/share/package-licenses/elementary-xf
 /usr/share/icons/elementary-xfce/emotes/16/face-uncertain.svg
 /usr/share/icons/elementary-xfce/emotes/16/face-wink.svg
 /usr/share/icons/elementary-xfce/emotes/16/face-worried.svg
-/usr/share/icons/elementary-xfce/icon-theme.cache
 /usr/share/icons/elementary-xfce/index.theme
 /usr/share/icons/elementary-xfce/mimes/128/application-7zip.svg
 /usr/share/icons/elementary-xfce/mimes/128/application-atom+xml.svg
