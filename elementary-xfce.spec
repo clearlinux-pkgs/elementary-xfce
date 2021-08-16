@@ -4,7 +4,7 @@
 #
 Name     : elementary-xfce
 Version  : 0.15.2
-Release  : 16
+Release  : 17
 URL      : https://github.com/shimmerproject/elementary-xfce/archive/v0.15.2/elementary-xfce-0.15.2.tar.gz
 Source0  : https://github.com/shimmerproject/elementary-xfce/archive/v0.15.2/elementary-xfce-0.15.2.tar.gz
 Summary  : No detailed summary available
@@ -60,7 +60,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1629074586
+export SOURCE_DATE_EPOCH=1629131542
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -73,7 +73,7 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1629074586
+export SOURCE_DATE_EPOCH=1629131542
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/elementary-xfce
 cp %{_builddir}/elementary-xfce-0.15.2/LICENSE %{buildroot}/usr/share/package-licenses/elementary-xfce/4cc77b90af91e615a64ae04893fdffa7939db84c
