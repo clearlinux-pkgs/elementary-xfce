@@ -1,4 +1,4 @@
-From b94f36534bbeb7eb1af2ea99fd2c5b43978184dc Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Ikey Doherty <michael.i.doherty@intel.com>
 Date: Fri, 24 Apr 2015 17:11:45 +0100
 Subject: [PATCH] Add Makefile
@@ -31,6 +31,3 @@ index 0000000..bdb217b
 +install: install-data
 +
 +.PHONY: dummy
--- 
-2.7.0
-
